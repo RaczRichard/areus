@@ -1,0 +1,14 @@
+POST {{METALOADER_RMS_HOST}}/admin/uc/6_2_higher_amount_transfer_UC HTTP/1.1
+Authorization: Basic {{METALOADER_RMS_USERNAME}} {{METALOADER_RMS_PASSWORD}}
+Content-Type: application/json
+
+{
+"id": "1",
+"name": "6_2_higher_amount_transfer_UC",
+"version": "1.0",
+"rules": "relatedEventIds = [event.eventId];\r\n\r\ncalendar = java.util.Calendar.getInstance();\r\ncalendar.add(java.util.Calendar.WEEK_OF_YEAR, -4);\r\nfourWeeksAgo = calendar.getTime();\r\nformatter = new java.text.SimpleDateFormat(\"yyyy-MM-dd'T'HH:mm:ss\");\r\n\r\nisOldAccount = event.enrichments.sourceFields.containsKey(\"sender_profile\") && event.enrichments.sourceFields.?sender_profile != null &&\r\n              event.enrichments.sourceFields.sender_profile.accountOpeningDate != null ?\r\n              formatter.parse(event.enrichments.sourceFields.sender_profile.accountOpeningDate).before(fourWeeksAgo) :\r\n              false;\r\n\r\nif (event.enrichments.lists.containsKey(\"whitelist\") && event.enrichments.lists.whitelist != null && event.enrichments.lists.?whitelist.contains(\"GLOBAL\") || event.enrichments.lists.containsKey(\"whitelist\") && event.enrichments.lists.whitelist != null && event.enrichments.lists.?whitelist.contains(\"higher_amount_transfer\") || isOldAccount) {\r\n    return ['ucResult' : false, 'relatedEventIds' : relatedEventIds];\r\n}\r\n\r\nif (event.enrichments.sourceFields.containsKey(\"sender_context\") && event.enrichments.sourceFields.?sender_context != null &&\r\n    event.enrichments.sourceFields.sender_context.size() != 0 &&\r\n    event.enrichments.sourceFields.sender_context.containsKey(\"emaAmount\") &&\r\n    event.enrichments.sourceFields.sender_context.emaAmount != null &&\r\n    event.enrichments.sourceFields.sender_context.emaAmount != 0 &&\r\n    event.transaction.amount > (event.enrichments.sourceFields.sender_context.emaAmount * 1.1)) {\r\n        return ['ucResult' : true, 'relatedEventIds': relatedEventIds];\r\n}else {\r\n     return ['ucResult' : false, 'relatedEventIds': relatedEventIds];\r\n}",
+"templateLevel": 1,
+"timeToLive": 0,
+"glists": [
+]
+}

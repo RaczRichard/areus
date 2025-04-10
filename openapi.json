@@ -1,0 +1,446 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "API Documentation",
+    "version" : "1.0"
+  },
+  "paths" : {
+    "/average-age" : {
+      "get" : {
+        "summary" : "getAverageAge",
+        "description" : "getAverageAge",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/between" : {
+      "get" : {
+        "summary" : "getCustomersBetween18And40",
+        "description" : "getCustomersBetween18And40",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "integer",
+                        "description" : "",
+                        "format" : "int64"
+                      },
+                      "lastName" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "firstName" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "dateOfBirth" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "idNumber" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "address" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "phoneNumber" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "email" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "registrationDate" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "verificationStatus" : {
+                        "type" : "string",
+                        "description" : "{VERIFIED=VERIFIED, UNVERIFIED=UNVERIFIED}",
+                        "enum" : [ "VERIFIED", "UNVERIFIED" ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create" : {
+      "post" : {
+        "summary" : "createCustomer",
+        "description" : "createCustomer",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "lastName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "firstName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "dateOfBirth" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "idNumber" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "address" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "phoneNumber" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "email" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "registrationDate" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "verificationStatus" : {
+                    "type" : "string",
+                    "description" : "{VERIFIED=VERIFIED, UNVERIFIED=UNVERIFIED}",
+                    "enum" : [ "VERIFIED", "UNVERIFIED" ]
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAll" : {
+      "get" : {
+        "summary" : "getAllCustomers",
+        "description" : "getAllCustomers",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "integer",
+                        "description" : "",
+                        "format" : "int64"
+                      },
+                      "lastName" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "firstName" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "dateOfBirth" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "idNumber" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "address" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "phoneNumber" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "email" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "registrationDate" : {
+                        "type" : "string",
+                        "description" : ""
+                      },
+                      "verificationStatus" : {
+                        "type" : "string",
+                        "description" : "{VERIFIED=VERIFIED, UNVERIFIED=UNVERIFIED}",
+                        "enum" : [ "VERIFIED", "UNVERIFIED" ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getOne/{id}" : {
+      "get" : {
+        "summary" : "getCustomerById",
+        "description" : "getCustomerById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "id" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "lastName" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "firstName" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "dateOfBirth" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "idNumber" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "address" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "phoneNumber" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "email" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "registrationDate" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "verificationStatus" : {
+                      "type" : "string",
+                      "description" : "{VERIFIED=VERIFIED, UNVERIFIED=UNVERIFIED}",
+                      "enum" : [ "VERIFIED", "UNVERIFIED" ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update/{id}" : {
+      "put" : {
+        "summary" : "updateCustomer",
+        "description" : "updateCustomer",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "description" : "",
+                    "format" : "int64"
+                  },
+                  "lastName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "firstName" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "dateOfBirth" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "idNumber" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "address" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "phoneNumber" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "email" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "registrationDate" : {
+                    "type" : "string",
+                    "description" : ""
+                  },
+                  "verificationStatus" : {
+                    "type" : "string",
+                    "description" : "{VERIFIED=VERIFIED, UNVERIFIED=UNVERIFIED}",
+                    "enum" : [ "VERIFIED", "UNVERIFIED" ]
+                  }
+                },
+                "description" : ""
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "id" : {
+                      "type" : "integer",
+                      "description" : "",
+                      "format" : "int64"
+                    },
+                    "lastName" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "firstName" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "dateOfBirth" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "idNumber" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "address" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "phoneNumber" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "email" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "registrationDate" : {
+                      "type" : "string",
+                      "description" : ""
+                    },
+                    "verificationStatus" : {
+                      "type" : "string",
+                      "description" : "{VERIFIED=VERIFIED, UNVERIFIED=UNVERIFIED}",
+                      "enum" : [ "VERIFIED", "UNVERIFIED" ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{id}" : {
+      "delete" : {
+        "summary" : "deleteCustomer",
+        "description" : "deleteCustomer",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "No Content"
+          }
+        }
+      }
+    }
+  },
+  "components" : { }
+}
