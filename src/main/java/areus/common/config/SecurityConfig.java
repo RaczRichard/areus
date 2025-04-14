@@ -1,5 +1,6 @@
 package areus.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +17,11 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Value("${areus.security-username}")
+    private String username;
+    @Value("${areus.security-password}")
+    private String password;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -35,8 +41,8 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         return new InMemoryUserDetailsManager(
                 User.builder()
-                        .username("user")
-                        .password(passwordEncoder.encode("password"))
+                        .username(username)
+                        .password(passwordEncoder.encode(password))
                         .roles("USER")
                         .build()
         );
